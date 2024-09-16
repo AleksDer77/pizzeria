@@ -5,8 +5,13 @@ namespace App\Console\Commands;
 use App\Http\Resources\Products\Resource\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductProperty;
+use App\Models\PropertyValue;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+
+use function Laravel\Prompts\select;
 
 
 class TestCommand extends Command
@@ -17,14 +22,7 @@ class TestCommand extends Command
 
     public function handle()
     {
-//        dd(DB::table('products')->where('category_id', 2)->get());
-//        $category = Category::query()->find(2);
-//        $products = $category->products;
-//        dd($products->pluck('name'));
-//        $res = ProductResource::collection(Product::all());
-//        dd($res);
-        $res = Product::first();
-        echo $res->id . PHP_EOL;
-
+        $products = Product::with('properties')->get();
+        dd($products->toArray());
     }
 }
