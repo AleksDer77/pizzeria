@@ -10,11 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('property_values', function (Blueprint $table) {
+        Schema::create('product_property', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->foreignId('product_property_id')->references('id')->on('product_properties');
+            $table->foreignId('property_id')->references('id')->on('properties');
             $table->foreignId('product_id')->references('id')->on('products');
             $table->string('value');
         });
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('property_values');
+        Schema::dropIfExists('product_property');
     }
 };

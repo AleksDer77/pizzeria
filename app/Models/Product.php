@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 
 /**
  *
@@ -54,16 +51,8 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function properties()
+    public function properties(): BelongsToMany
     {
-        return $this->hasManyThrough(ProductProperty::class, PropertyValue::class, 'product_id', 'id', 'id',
-            'product_property_id')->withPivot('value');
+        return $this->belongsToMany(\App\Models\Property::class);
     }
-
-//    public function productProperty(): HasOneThrough
-//    {
-//        return $this->hasOneThrough(ProductProperty::class, PropertyValue::class);
-//    }
-
-
 }

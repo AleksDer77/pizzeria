@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class PropertyValue extends Model
+class Value extends Model
 {
     use HasFactory;
 
@@ -20,9 +20,4 @@ class PropertyValue extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function property()
-    {
-        return $this->belongsTo(ProductProperty::class, 'property_values', 'product_property_id',
-            'product_id')->wihtPivot('value', 'product_property_id');
-    }
 }
