@@ -18,7 +18,7 @@ class ProductPropertySeeder extends Seeder
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
                 'property_id' => 1,
                 'product_id'  => 1,
-                'value'       => '200',
+                'value'       => '200Ккал',
             ],
             [
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
@@ -30,7 +30,7 @@ class ProductPropertySeeder extends Seeder
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
                 'property_id' => 1,
                 'product_id'  => 3,
-                'value'       => 250,
+                'value'       => '250Ккал',
             ],
             [
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),

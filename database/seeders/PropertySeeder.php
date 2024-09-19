@@ -14,7 +14,7 @@ class PropertySeeder extends Seeder
     public function run(): void
     {
         DB::table('properties')->insert([
-            ['property' => 'Ккал', 'created_at' => now()],
+            ['property' => 'Калорийность', 'created_at' => now()],
             ['property' => 'Объем', 'created_at' => now()],
             ['property' => 'Размер', 'created_at' => now()],
             ['property' => 'Вес', 'created_at' => now()],

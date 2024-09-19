@@ -2,23 +2,25 @@
 
 namespace App\Providers;
 
+use App\Http\Resources\Properties\PropertyResource;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+
+use function PHPUnit\Framework\isReadable;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        //
+        if ($this->app->environment('local')) {
+            DB::listen(function ($query) {
+                info($query->sql);
+            });
+        }
     }
 }

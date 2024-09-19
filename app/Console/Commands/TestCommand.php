@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Resources\Products\Resource\ProductResource;
+use App\Http\Resources\Properties\Products\Resource\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\property;

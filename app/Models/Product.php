@@ -53,6 +53,6 @@ class Product extends Model
 
     public function properties(): BelongsToMany
     {
-        return $this->belongsToMany(\App\Models\Property::class);
+        return $this->belongsToMany(\App\Models\Property::class)->withPivot('value');
     }
 }

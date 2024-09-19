@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Resources\Products\Resource\ProductResource;
 use App\Models\Product;
-use http\Client\Response;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
@@ -22,21 +21,26 @@ class ProductController extends Controller
         $data = $request->validated();
         $product = Product::query()->create($data);
 
-        return ProductResource::make($product);
+        return new ProductResource($product);
     }
 
-    public function show(Product $product)
+    public function show($id)
     {
+        if (!$product = Product::with('properties')->find($id)) {
+            return response()->json([
+                "message" => "Продукт не существует",
+            ], 404);
+        }
         return ProductResource::make($product);
     }
 
     public function update(Request $request, Product $product)
     {
-        //
     }
 
-    public function destroy(Product $product)
+    public function destroy($id): Response
     {
-        //
+        Product::destroy($id);
+        return response()->noContent();
     }
 }
