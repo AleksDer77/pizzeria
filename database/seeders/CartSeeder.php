@@ -15,29 +15,24 @@ class CartSeeder extends Seeder
     {
         DB::table('carts')->insert([
             [
-                'created_at' => fake()->dateTimeBetween('-2 months', now()),
                 'user_id'    => 1,
-                'amount'     => 6000,
+                'created_at' => fake()->dateTimeBetween('-2 months', now()),
             ],
             [
-                'created_at' => fake()->dateTimeBetween('-2 months', now()),
                 'user_id'    => 2,
-                'amount'     => 7000,
+                'created_at' => fake()->dateTimeBetween('-2 months', now()),
             ],
             [
-                'created_at' => fake()->dateTimeBetween('-2 months', now()),
                 'user_id'    => 3,
-                'amount'     => 8000,
+                'created_at' => fake()->dateTimeBetween('-2 months', now()),
             ],
             [
-                'created_at' => fake()->dateTimeBetween('-2 months', now()),
                 'user_id'    => 4,
-                'amount'     => 9000,
+                'created_at' => fake()->dateTimeBetween('-2 months', now()),
             ],
             [
-                'created_at' => fake()->dateTimeBetween('-2 months', now()),
                 'user_id'    => 5,
-                'amount'     => 2220,
+                'created_at' => fake()->dateTimeBetween('-2 months', now()),
             ],
         ]);
     }

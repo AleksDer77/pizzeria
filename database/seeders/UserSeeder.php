@@ -9,16 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         DB::table('users')->insert([
             [
                 'created_at' => fake()->dateTimeBetween('-4 months', now()),
                 'name'       => 'Aleks',
-                'email'      => 'email@email.com',
+                'email'      => 'aleks@email.com',
                 'password'   => Hash::make('password'),
                 'phone'      => '+7953337392',
                 'is_admin'   => false,
@@ -41,8 +38,8 @@ class UserSeeder extends Seeder
             ],
             [
                 'created_at' => fake()->dateTimeBetween('-4 months', now()),
-                'name'       => 'Olia',
-                'email'      => 'olia@email.com',
+                'name'       => 'Olya',
+                'email'      => 'olya@email.com',
                 'password'   => Hash::make('password'),
                 'phone'      => '+797839437',
                 'is_admin'   => false,

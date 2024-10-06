@@ -8,19 +8,18 @@ use Illuminate\Support\Facades\DB;
 
 class ProductSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
+    /*
+     * кол-во продуктов ()
      */
     public function run(): void
     {
-        DB::table('products')->insert([
+        $data = [
             [
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
-                'name'        => 'Черри Чиз',
+                'name'        => 'Черри Чиз 24см',
                 'description' => 'Изысканные помидорки Черри, насыщенный сыр Филадельфия и тягучая Моцарелла.',
                 'price'       => 590,
                 'available'   => true,
-
                 'category_id' => 1,
             ],
             [
@@ -33,7 +32,15 @@ class ProductSeeder extends Seeder
             ],
             [
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
-                'name'        => 'Пиццамен',
+                'name'        => 'Пицца-мен 24см',
+                'description' => 'Наша фирменная пицца – тягучая моцарелла, сочная куриная грудка и пепперони, поджаристый бекон, спелые томаты, шампиньоны, красный лук и ароматный чеснок. Посыпается пармезаном и свежей зеленью.',
+                'price'       => 590,
+                'available'   => true,
+                'category_id' => 1,
+            ],
+            [
+                'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
+                'name'        => 'Пицца-мен 36см',
                 'description' => 'Наша фирменная пицца – тягучая моцарелла, сочная куриная грудка и пепперони, поджаристый бекон, спелые томаты, шампиньоны, красный лук и ароматный чеснок. Посыпается пармезаном и свежей зеленью.',
                 'price'       => 590,
                 'available'   => true,
@@ -44,7 +51,7 @@ class ProductSeeder extends Seeder
                 'name'        => 'Пепперони',
                 'description' => 'Классический рецепт пиццы пепперони – пикантные колбаски пепперони со свежими шампиньонами и сыром моцарелла.',
                 'price'       => 530,
-                'available'   => true,
+                'available'   => false,
                 'category_id' => 1,
             ],
             [
@@ -65,7 +72,15 @@ class ProductSeeder extends Seeder
             ],
             [
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
-                'name'        => 'Гавайская',
+                'name'        => 'Гавайская 24см',
+                'description' => 'Сочетание сладкого ананаса, ветчины и сыра моцарелла.',
+                'price'       => 530,
+                'available'   => true,
+                'category_id' => 1,
+            ],
+            [
+                'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
+                'name'        => 'Гавайская 36см',
                 'description' => 'Сочетание сладкого ананаса, ветчины и сыра моцарелла.',
                 'price'       => 530,
                 'available'   => true,
@@ -97,7 +112,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
-                'name'        => 'Морс',
+                'name'        => 'Морс из клюквы 250мл',
                 'description' => 'Освежающий натуральный морс из клюквы',
                 'price'       => 80,
                 'available'   => true,
@@ -105,20 +120,29 @@ class ProductSeeder extends Seeder
             ],
             [
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
-                'name'        => 'Сок',
-                'description' => 'Натуральный фруктовый сок в ассортименте',
+                'name'        => 'Сок яблочный 250мл',
+                'description' => 'Натуральный фруктовый сок',
                 'price'       => 65,
                 'available'   => true,
                 'category_id' => 2,
             ],
             [
                 'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
-                'name'        => 'Чай',
+                'name'        => 'Чай зеленый',
                 'description' => 'Крепкий тонизирующий чай',
                 'price'       => 90,
                 'available'   => true,
                 'category_id' => 2,
             ],
-        ]);
+            [
+                'created_at'  => fake()->dateTimeBetween('-6 months', '-3 months'),
+                'name'        => 'Кофе американо',
+                'description' => 'Натуральный молотый кофе средней обжарки',
+                'price'       => 90,
+                'available'   => true,
+                'category_id' => 2,
+            ],
+        ];
+        DB::table('products')->insert($data);
     }
 }

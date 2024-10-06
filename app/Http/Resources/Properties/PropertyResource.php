@@ -2,9 +2,13 @@
 
 namespace App\Http\Resources\Properties;
 
+use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @mixin Property
+ */
 class PropertyResource extends JsonResource
 {
     /**
@@ -15,8 +19,9 @@ class PropertyResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'key'   => $this->property,
-            'value' => $this->pivot->value,
+//            'value' => $this->pivot->value,
+//            'key'   => $this->property,
+$this->property => $this->pivot->value,
         ];
     }
 }

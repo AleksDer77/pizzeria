@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property Carbon|null $created_at
@@ -25,6 +25,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Category whereId($value)
  * @method static Builder|Category whereName($value)
  * @method static Builder|Category whereUpdatedAt($value)
+ * @method static \Database\Factories\CategoryFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Category extends Model

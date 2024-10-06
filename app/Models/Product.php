@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property Carbon|null $created_at
@@ -32,6 +33,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Product whereName($value)
  * @method static Builder|Product wherePrice($value)
  * @method static Builder|Product whereUpdatedAt($value)
+ * @property-read Collection<int, \App\Models\Property> $properties
+ * @property-read int|null $properties_count
+ * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Product extends Model
@@ -53,6 +57,11 @@ class Product extends Model
 
     public function properties(): BelongsToMany
     {
-        return $this->belongsToMany(\App\Models\Property::class)->withPivot('value');
+        return $this->belongsToMany(Property::class)->withPivot('value');
+    }
+
+    public static function getActive(): Collection
+    {
+        return self::query()->where('available', true)->get();
     }
 }

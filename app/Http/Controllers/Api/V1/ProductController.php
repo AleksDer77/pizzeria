@@ -3,17 +3,28 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Requests\Api\Product\StoreProductRequest;
+use App\Http\Requests\Api\Product\UpdateProductRequest;
 use App\Http\Resources\Products\Resource\ProductResource;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * @mixin Product
+ */
 class ProductController extends Controller
 {
     public function index()
     {
-        return ProductResource::collection(Product::with('properties')->get());
+        try {
+            return ProductResource::collection(Product::with('properties')->get());
+        } catch (\Throwable $exception) {
+            return response()->json([
+                'error'   => 'ошибка',
+                'message' => 'что-то пошло не так'.$exception->getMessage(),
+                'class'   => get_class($exception),
+            ], 500);
+        }
     }
 
     public function store(StoreProductRequest $request): ProductResource
@@ -24,18 +35,16 @@ class ProductController extends Controller
         return new ProductResource($product);
     }
 
-    public function show($id)
+    public function show(Product $product): ProductResource
     {
-        if (!$product = Product::with('properties')->find($id)) {
-            return response()->json([
-                "message" => "Продукт не существует",
-            ], 404);
-        }
-        return ProductResource::make($product);
+        return new ProductResource($product->load('properties'));
     }
 
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
+        $data = $request->validated();
+
+        $product->update($data);
     }
 
     public function destroy($id): Response

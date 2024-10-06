@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProductController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
 
 
-//Route::prefix('v1')->group(function () {
-//    Route::get('products', [ProductController::class, 'index'])->name('products.index');
-//    Route::post('products', [ProductController::class, 'store'])->name('products.store');
+Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::post('login', [AuthController::class, 'login'])->name('login');
+//Route::post('login', function (\Illuminate\Http\Request $request) {
+//    dd($request);
 //});

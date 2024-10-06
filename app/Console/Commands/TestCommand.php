@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Http\Resources\Properties\Products\Resource\ProductResource;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\property;
@@ -22,7 +23,7 @@ class TestCommand extends Command
 
     public function handle()
     {
-        $products = Product::with('properties')->first();
-        dd($products->toArray());
+        $cart = Cart::query()->create(['user_id' => 1]);
+        dd($cart);
     }
 }
